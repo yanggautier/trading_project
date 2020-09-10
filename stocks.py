@@ -2,11 +2,11 @@ from pymongo import MongoClient
 from alpha_vantage.timeseries import TimeSeries
 import json
 import pprint
-
+from cred import getApiKey
 
 def update_stock(symbol):
 
-    KEY = "7TW80K6HLVAZXBQO"
+    KEY = getApiKey()
 
     ts = TimeSeries(key=KEY, output_format='pandas')
     data, meta_data = ts.get_daily(symbol=symbol, outputsize = 'full')
@@ -28,7 +28,7 @@ def update_stock(symbol):
 
 if __name__ == "__main__":
 
-    symbol =  'AAPL'
+    symbol =  'GOOGL'
     update_stock(symbol)
 
 

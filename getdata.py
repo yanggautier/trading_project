@@ -22,9 +22,10 @@ def get_data(symbol):
 
     df = df[['date','symbol','open','close','high','low', 'volume']]
 
-    df['date'] =  df['date'].apply(lambda x: datetime.fromisoformat(x[:-1]))
+    #df['date'] =  df['date'].apply(lambda x: datetime.fromisoformat(x[:-1]))
 
-    df = df.set_index("date")
+    df2['date'] = pd.to_datetime(df2['date']).dt.tz_localize(None)
+    df2 = df2.set_index("date")
 
     spark.stop()
     return df
