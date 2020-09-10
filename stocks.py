@@ -9,7 +9,7 @@ def update_stock(symbol):
     KEY = "7TW80K6HLVAZXBQO"
 
     ts = TimeSeries(key=KEY, output_format='pandas')
-    data, meta_data = ts.get_intraday(symbol=symbol, interval = '1min', outputsize = 'full')
+    data, meta_data = ts.get_daily(symbol=symbol, outputsize = 'full')
 
     client = MongoClient('localhost', 27017)
     db = client['trading']
@@ -28,7 +28,7 @@ def update_stock(symbol):
 
 if __name__ == "__main__":
 
-    symbol =  'GOOGL'
+    symbol =  'AAPL'
     update_stock(symbol)
 
 

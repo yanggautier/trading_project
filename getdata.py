@@ -25,7 +25,13 @@ def get_data(symbol):
     df['date'] =  df['date'].apply(lambda x: datetime.fromisoformat(x[:-1]))
 
     df = df.set_index("date")
+
+    spark.stop()
     return df
+
+if __name__ == '__main__':
+    df = get_data('AAPL')
+    print(df.head())
 
 
 
